@@ -19,14 +19,15 @@ class StreamEvent(commands.Cog):
             if before.activity == after.activity:
                 return
             channel = discord.utils.get(after.guild.channels, name="stream-broadcasts")
-            role = discord.utils.get(after.guild.roles, name="Stream Notification")
+            role_id = 1113214179860561971
+            role = discord.utils.get(after.guild.roles, id=role_id)
             if isinstance(after.activity, Streaming):
-                await after.add_roles(role)
+                #await after.add_roles(role)
                 stream_url = after.activity.url
                 stream_url_split = stream_url.split(".")
                 streaming_service = stream_url_split[1]
                 streaming_service = streaming_service.capitalize()
-                await channel.send(f"||<@&1084288490214281247>||\n\nAHOY THERE!!\n\n{stream_url}")
+                await channel.send(f"||<@&{role_id}>||\n\nAHOY THERE!!\n\n{stream_url}")
             else:
                 return
 
